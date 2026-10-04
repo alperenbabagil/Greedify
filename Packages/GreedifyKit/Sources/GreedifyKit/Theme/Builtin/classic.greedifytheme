@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "Classic",
+  "author": "Greedify",
+  "base": "dark",
+  "lyrics": "solid",
+  "colors": {
+    "background": "#000000", "surface": "#29293A", "raised": "#33334A",
+    "text": "#00E000", "textSecondary": "#00A000",
+    "accent": "#FFD000", "onAccent": "#000000",
+    "selection": "#0000C0", "divider": "#00E0002E", "lyricsText": "#00E000"
+  },
+  "fonts": { "scale": 0.9, "titleWeight": "bold" },
+  "shapes": { "cardRadius": 2, "buttonRadius": 2, "artworkRadius": 0, "rowRadius": 0, "borderWidth": 1, "buttonStyle": "bevel", "density": "compact" }
+}

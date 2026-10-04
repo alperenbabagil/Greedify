@@ -1,0 +1,13 @@
+#!/bin/sh
+# Run by librespot (--onevent) for each player event. Prints the event as one line on librespot's stdout,
+# which the greedify-speaker launcher hands to Greedify (see LibrespotEvent.parse):
+#   GREEDIFY-EVENT<TAB>KEY=value<TAB>KEY=value…
+# Multi-line values (ARTISTS, COVERS) are joined with \037; tabs in values become spaces.
+line="GREEDIFY-EVENT"
+for key in PLAYER_EVENT ITEM_TYPE TRACK_ID URI NAME ARTISTS ALBUM SHOW_NAME COVERS DURATION_MS POSITION_MS VOLUME SHUFFLE REPEAT REPEAT_TRACK; do
+  eval "value=\${$key-}"
+  [ -n "$value" ] || continue
+  value=$(printf '%s' "$value" | tr '\n\t' '\037 ')
+  line="$line	$key=$value"
+done
+printf '%s\n' "$line"

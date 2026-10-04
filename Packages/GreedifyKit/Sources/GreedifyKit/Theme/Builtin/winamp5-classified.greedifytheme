@@ -1,0 +1,550 @@
+{
+  "base": "dark",
+  "colors": {
+    "accent": "#BBD2FF",
+    "background": "#1C3D7D",
+    "divider": "#FFFFFF26",
+    "lyricsText": "#FFFFFF",
+    "onAccent": "#000000",
+    "raised": "#101010",
+    "selection": "#5475B6",
+    "surface": "#000101",
+    "text": "#FFFFFF",
+    "textSecondary": "#B0BBD2"
+  },
+  "credits": [
+    {
+      "detail": "Original design by Sven Kistner; classic version by Zarko Jovic and GuidoD; edited by Wildrose-Wally.",
+      "title": "Winamp5 Classified"
+    }
+  ],
+  "fonts": {
+    "scale": 1,
+    "titleWeight": "bold"
+  },
+  "images": {
+    "pixelFont": "iVBORw0KGgoAAAANSUhEUgAAAJsAAAASCAIAAADDvDvLAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAm6ADAAQAAAABAAAAEgAAAABBk/1gAAAE6UlEQVRoBe2XMY5UVxBFZ0ZMhJAQYgE4sJfgBeAAdmQ5QYLAyDty4g14CU7YABlyNMFw2sdcXdXr/7uJGKHuoFR969atqvfr/Z65fvHy7Ye/3lxdXT3/+dcnTx7r8/WHX959+vRvkKPRj3//AdMP/OSCND++mmQFSS61oka0OSqnH5lR6GhnjR74GoXz5z2zK+t29bWrNers3WdncfKpns5BxHfsI8Yj4fb2lpI/vX5PAezd3Z34ftRjIhc+Nrn4rsJQFodGFD8DiKcuUTmpzlc5UaBbQHGsTJyjdaPcFc+ZFzVy//nzN2y6oofUTT9fG/VkPGdyV00QO8yzsNZJ+4jmfPI4JGMZAEtJ8ES9E3KC85WjxCa6n2s0mtFhJHsIorI9eFj01pzcUXv2UakcfRyj5p4TVQervhXVSW/pZ+DqJ4qCa+cUI6qyi6hvxdQltxWaKX/LHp6ohXHclN5oQFrMXsixaS3tdtRcEXN95OB8jXI0h/5Qdgy7SpVwgtuVD+NoND2cjKKpzpjL6unWitpojui4Ycze50xWpsPv6boWmnzsf+UcRW5IYBcYAGdro8ER3YmyLx3FB0EQu6XcHHz1k5XcUXdk7fecKD0wY+f6tgCBYxSE6lqQ9COnc4OgCR8mjp3jt/LI6nOGSRWy5KzWHuyNJtP/yhzI4Y66Izg8cyzFsOwUeDYL6TUKLXsHU4VsXHLFE8WRY6677ACErBuOWVi7woG5Rt1W8dRNz73LiUJ2op3cPpn1NEAQ4fPs2VOOFceKPNRVGcR501VPZA/DwuxnMaL2ttrr8bcuWwMJS3n2Al9RfXFbD1NOyh9G/PLL2rkZ4Gh0S7mrnPTtOZ3v8JvTvrMPS+dMt6MWfs8rfyCjVisPZjS36m7l3hhwc7MFFObcER1RcJg+PKLybQWfFKPYNZcso+crp5/UCkIn1G3c3kCogh9mc+Lbg5z2j2ZBEB8Vo0bUijCdPTpMHX07TG+ebTShyQwy9MGTiz5kmdj/Ug/vS/DD7yiQL428kbmR4GyHu5mob3P4wfUhy/F3RR2VQcxCDTy5KOAnqgIc66qwY9FMDypHgaz2jQ7buTsV7RCCc9nz2tU6RXPUD4fO8elHtXTiRDmfVsA3ihVHAVlzsfh8jB5+R5XGyWaxHXzNjlgmUfmx7gsWBEtJ+SqDuJuotU58o+mh65KbHk763X/76PPVjx0OTUIDSS35HB83j7nA7bN1Mh1RpJIbTfX77up7AlgIjawKIJlCJpauWgEROzncUfcFx+evFc/jcceR6CgcEPdF5oiaFeVogsdPlGNiy4Kbu2Wt29Ho0EP72W70mx9/C3eWoUYW/JwDs+ferEwVtiYSx6qApspo2luqoJMp1PTM7RyLSHSuf3z1e8LsAgnaFJCNZS+IgscPH4Wj0aGsZmchRUOpGOVUd0hwPmFGId1GQf5JZit0V05nOSdqZvsyB2fMC39FumfPTSve/MY7K8xRXXz+ret47AhXmL3Q8gJp3MOFA36xD+0Eru/v793obMTR7Rt74QPunb34D+QEbnxN8Tj7bY4PwvbxIHl48eWAc03XqMjFftsTmHe0b2r/JgX3tyFvcPBzfuEeyP76pvm+7f//j/pgGJXHg2XLvIVY72hwormp8mWadbHf/ATmHaWh/h3N7+XWHYV/uX8P6gQ+A+JCYq5qOg3rAAAAAElFTkSuQmCC"
+  },
+  "lyrics": "solid",
+  "name": "Winamp5 Classified",
+  "shapes": {
+    "artworkRadius": 2,
+    "borderWidth": 1,
+    "buttonRadius": 2,
+    "buttonStyle": "bevel",
+    "cardRadius": 2,
+    "density": "compact",
+    "rowRadius": 2
+  },
+  "source": "Winamp skin Winamp5_Classified_v5.5.wsz",
+  "style": {
+    "bar": {
+      "analyser": [
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987",
+        "#FFFFFF",
+        "#274987"
+      ],
+      "artwork": true,
+      "height": 88,
+      "layout": "winamp",
+      "readouts": true,
+      "transport": "winamp",
+      "transportWell": {
+        "angle": 90,
+        "kind": "gradient",
+        "stops": [
+          {
+            "at": 0,
+            "color": "#9EA5B2"
+          },
+          {
+            "at": 0.3,
+            "color": "#868E9C"
+          },
+          {
+            "at": 0.6,
+            "color": "#6A7180"
+          },
+          {
+            "at": 0.85,
+            "color": "#7F8795"
+          },
+          {
+            "at": 1,
+            "color": "#9199A6"
+          }
+        ]
+      }
+    },
+    "bevels": {
+      "bar": {
+        "dark": "#6E7888",
+        "light": "#FFFFFF",
+        "style": "raised",
+        "width": 1
+      },
+      "panel": {
+        "dark": "#6E7888",
+        "light": "#FFFFFF",
+        "style": "sunken",
+        "width": 1
+      }
+    },
+    "button": {
+      "active": "#2D62D8",
+      "face": {
+        "angle": 90,
+        "kind": "gradient",
+        "stops": [
+          {
+            "at": 0,
+            "color": "#FFFFFF"
+          },
+          {
+            "at": 0.22,
+            "color": "#EBEBEB"
+          },
+          {
+            "at": 0.42,
+            "color": "#AFAFAF"
+          },
+          {
+            "at": 0.6,
+            "color": "#B9B8B7"
+          },
+          {
+            "at": 0.85,
+            "color": "#BDC3CE"
+          },
+          {
+            "at": 1,
+            "color": "#A1A9B6"
+          }
+        ]
+      },
+      "glyph": "#27313F",
+      "glyphWeight": "bold",
+      "halo": "#B3B9C6",
+      "labelShape": "pill",
+      "outline": "#181D27",
+      "pressed": {
+        "face": {
+          "angle": 90,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#C6CEDA"
+            },
+            {
+              "at": 1,
+              "color": "#F2F5F9"
+            }
+          ]
+        },
+        "glyph": "#2D62D8"
+      },
+      "shape": "circle",
+      "spacing": 3
+    },
+    "divider": "#FFFFFF26",
+    "frame": {
+      "bevel": {
+        "dark": "#6E7888",
+        "light": "#FFFFFF",
+        "style": "raised",
+        "width": 1
+      },
+      "face": {
+        "angle": 90,
+        "kind": "gradient",
+        "stops": [
+          {
+            "at": 0,
+            "color": "#E4E8F0"
+          },
+          {
+            "at": 1,
+            "color": "#B2BAC8"
+          }
+        ]
+      },
+      "outline": "#0B1427",
+      "radius": 7,
+      "thickness": 8,
+      "title": {
+        "background": {
+          "angle": 90,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#9BA3B5"
+            },
+            {
+              "at": 0.07,
+              "color": "#B3B9C9"
+            },
+            {
+              "at": 0.16,
+              "color": "#6B768E"
+            },
+            {
+              "at": 0.4,
+              "color": "#3F4C6A"
+            },
+            {
+              "at": 0.46,
+              "color": "#0E1829"
+            },
+            {
+              "at": 0.8,
+              "color": "#16284E"
+            },
+            {
+              "at": 1,
+              "color": "#1C2C51"
+            }
+          ]
+        },
+        "font": "system",
+        "height": 20,
+        "material": {
+          "angle": 90,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#000000"
+            },
+            {
+              "at": 0.25,
+              "color": "#F6F6F8"
+            },
+            {
+              "at": 0.55,
+              "color": "#9CA3B0"
+            },
+            {
+              "at": 0.8,
+              "color": "#C2C7D2"
+            },
+            {
+              "at": 1,
+              "color": "#000000"
+            }
+          ]
+        },
+        "prefix": "WINAMP",
+        "rounded": true,
+        "size": 13,
+        "stripeHeight": 5,
+        "text": "#E8ECF4",
+        "weight": "heavy"
+      }
+    },
+    "lcd": {
+      "bevel": {
+        "dark": "#5A6474",
+        "light": "#E8ECF2",
+        "style": "sunken",
+        "width": 1
+      },
+      "digits": "segment",
+      "glow": 1,
+      "info": "#BFD0EE",
+      "material": {
+        "base": "#284A89",
+        "dot": "#002263",
+        "kind": "dotGrid",
+        "pitch": 2,
+        "size": 1
+      },
+      "radius": 6,
+      "text": "#FFFFFF"
+    },
+    "list": {
+      "font": "Arial",
+      "layout": "playlist",
+      "rowHeight": 18,
+      "scroller": {
+        "bevel": {
+          "dark": "#5D636E",
+          "light": "#FFFFFF",
+          "style": "raised",
+          "width": 1
+        },
+        "thumb": {
+          "angle": 0,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#FFFFFF"
+            },
+            {
+              "at": 0.5,
+              "color": "#E5E5EB"
+            },
+            {
+              "at": 1,
+              "color": "#B6BCC8"
+            }
+          ]
+        },
+        "track": {
+          "angle": 0,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#8D93A2"
+            },
+            {
+              "at": 0.5,
+              "color": "#B6BCC8"
+            },
+            {
+              "at": 1,
+              "color": "#8D93A2"
+            }
+          ]
+        },
+        "width": 12
+      },
+      "size": 11
+    },
+    "materials": {
+      "bar": {
+        "angle": 90,
+        "kind": "gradient",
+        "stops": [
+          {
+            "at": 0,
+            "color": "#F4F6FA"
+          },
+          {
+            "at": 0.45,
+            "color": "#D6DCE6"
+          },
+          {
+            "at": 1,
+            "color": "#B2BAC8"
+          }
+        ]
+      },
+      "header": {
+        "angle": 90,
+        "kind": "gradient",
+        "stops": [
+          {
+            "at": 0,
+            "color": "#9BA3B5"
+          },
+          {
+            "at": 0.07,
+            "color": "#B3B9C9"
+          },
+          {
+            "at": 0.16,
+            "color": "#6B768E"
+          },
+          {
+            "at": 0.4,
+            "color": "#3F4C6A"
+          },
+          {
+            "at": 0.46,
+            "color": "#0E1829"
+          },
+          {
+            "at": 0.8,
+            "color": "#16284E"
+          },
+          {
+            "at": 1,
+            "color": "#1C2C51"
+          }
+        ]
+      },
+      "lyrics": {
+        "color": "#1C3D7D",
+        "kind": "solid"
+      },
+      "popover": {
+        "base": "#18326A",
+        "dot": "#22407E",
+        "kind": "dotGrid",
+        "pitch": 2,
+        "size": 1
+      },
+      "sidebar": {
+        "color": "#1C3D7D",
+        "kind": "solid"
+      },
+      "window": {
+        "color": "#1C3D7D",
+        "kind": "solid"
+      }
+    },
+    "pageHeader": {
+      "artwork": 48,
+      "layout": "strip"
+    },
+    "rows": {
+      "hover": {
+        "fill": {
+          "color": "#2A4985",
+          "kind": "solid"
+        }
+      },
+      "normal": {
+        "fill": {
+          "color": "#1C3D7D",
+          "kind": "solid"
+        },
+        "secondary": "#B0BBD2",
+        "text": "#FFFFFF"
+      },
+      "playing": {
+        "text": "#BBD2FF"
+      },
+      "selected": {
+        "fill": {
+          "color": "#6788C9",
+          "kind": "solid"
+        },
+        "text": "#BBD2FF"
+      }
+    },
+    "slider": {
+      "fill": {
+        "colors": [],
+        "kind": "none"
+      },
+      "groove": {
+        "bevel": {
+          "dark": "#8A94A4",
+          "light": "#FFFFFF",
+          "style": "sunken",
+          "width": 1
+        },
+        "height": 6,
+        "material": {
+          "color": "#C9CFD9",
+          "kind": "solid"
+        }
+      },
+      "thumb": {
+        "bevel": {
+          "dark": "#7A8494",
+          "light": "#FFFFFF",
+          "style": "raised",
+          "width": 1
+        },
+        "face": {
+          "angle": 90,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#FFFFFF"
+            },
+            {
+              "at": 1,
+              "color": "#C2CAD6"
+            }
+          ]
+        },
+        "height": 10,
+        "shape": "rounded",
+        "width": 30
+      }
+    },
+    "text": {
+      "body": {
+        "color": "#FFFFFF"
+      },
+      "header": {
+        "color": "#BFD0EE",
+        "weight": "semibold"
+      },
+      "lyrics": {
+        "size": 13,
+        "weight": "regular"
+      },
+      "secondary": {
+        "color": "#B0BBD2"
+      },
+      "title": {
+        "color": "#FFFFFF",
+        "font": "pixel",
+        "glow": 1,
+        "size": 13,
+        "weight": "bold"
+      }
+    },
+    "volume": {
+      "fill": {
+        "colors": [
+          "#3668D0",
+          "#5A8AE8",
+          "#7EAAF8"
+        ],
+        "kind": "ramp"
+      },
+      "groove": {
+        "bevel": {
+          "dark": "#8A94A4",
+          "light": "#FFFFFF",
+          "style": "sunken",
+          "width": 1
+        },
+        "height": 6,
+        "material": {
+          "color": "#C9CFD9",
+          "kind": "solid"
+        }
+      },
+      "thumb": {
+        "bevel": {
+          "dark": "#7A8494",
+          "light": "#FFFFFF",
+          "style": "raised",
+          "width": 1
+        },
+        "face": {
+          "angle": 90,
+          "kind": "gradient",
+          "stops": [
+            {
+              "at": 0,
+              "color": "#FFFFFF"
+            },
+            {
+              "at": 1,
+              "color": "#C2CAD6"
+            }
+          ]
+        },
+        "height": 10,
+        "shape": "rounded",
+        "width": 14
+      }
+    }
+  },
+  "version": 1
+}

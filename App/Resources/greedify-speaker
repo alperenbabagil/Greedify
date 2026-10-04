@@ -1,0 +1,30 @@
+#!/bin/sh
+# Started by Greedify as a child process: runs the bundled librespot with the arguments Greedify wrote,
+# one per line, and stops it when Greedify goes away, even if Greedify crashed or was force-quit.
+#   GREEDIFY_PARENT_PID  pid to watch (Greedify sets it; defaults to our parent)
+#   GREEDIFY_ARGS_FILE   arguments file (default: ~/Library/Application Support/Greedify/librespot-args)
+#   GREEDIFY_LIBRESPOT   librespot binary (default: next to this script)
+# Player events go to librespot's stdout through greedify-event (next to this script), for Greedify to read.
+ARGS_FILE="${GREEDIFY_ARGS_FILE:-$HOME/Library/Application Support/Greedify/librespot-args}"
+PARENT="${GREEDIFY_PARENT_PID:-$PPID}"
+LIBRESPOT="${GREEDIFY_LIBRESPOT:-$(dirname "$0")/librespot}"
+if [ ! -f "$ARGS_FILE" ]; then
+  echo "greedify-speaker: $ARGS_FILE is missing; open Greedify to finish setup" >&2
+  exit 78
+fi
+set --
+while IFS= read -r line || [ -n "$line" ]; do
+  [ -n "$line" ] && set -- "$@" "$line"
+done < "$ARGS_FILE"
+EVENT="$(dirname "$0")/greedify-event"
+[ -x "$EVENT" ] && set -- "$@" --onevent "$EVENT"
+
+"$LIBRESPOT" "$@" &
+CHILD=$!
+trap 'kill "$CHILD" 2>/dev/null; wait "$CHILD" 2>/dev/null; exit 0' TERM INT HUP
+# Watchdog: exit together with librespot, or stop it once Greedify is gone.
+while kill -0 "$PARENT" 2>/dev/null && kill -0 "$CHILD" 2>/dev/null; do
+  sleep 1
+done
+kill "$CHILD" 2>/dev/null
+wait "$CHILD"

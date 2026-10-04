@@ -1,0 +1,71 @@
+name: Greedify
+options:
+  bundleIdPrefix: com.alperen
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+packages:
+  GreedifyKit:
+    path: Packages/GreedifyKit
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+targets:
+  Greedify:
+    type: application
+    platform: macOS
+    scheme: {}
+    sources:
+      - path: App
+        excludes:
+          - "Resources/greedify-speaker"
+          - "Resources/greedify-event"
+    dependencies:
+      - package: GreedifyKit
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Greedify
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.music
+        # AppleScript in Spotify's vocabulary (App/Model/Scripting.swift), for now-playing widgets.
+        NSAppleScriptEnabled: true
+        OSAScriptingDefinition: Greedify.sdef
+        # No Liquid Glass: macOS 26+ draws the pre-glass design for the sidebar, toolbar, popover and controls,
+        # so themes and curated skins aren't drawn through translucent glass.
+        UIDesignRequiresCompatibility: true
+        # macOS's default allocator keeps the main window's freed memory (malloc_zone_pressure_relief returns 0);
+        # the space-efficient mode packs and returns it: closed 44-55 MB instead of 66-75, fresh 23 instead of 32.
+        # Applies when LaunchServices starts the app (Finder, `open`, the login item), not a bare exec.
+        LSEnvironment:
+          MallocSpaceEfficient: "1"
+        # macOS Tahoe offers security-code AutoFill in every text field and runs an "AutoFill (Greedify)" helper
+        # (~15 MB) once one is used. Greedify has no code fields: only fields marked as one-time-code get it.
+        NSAutoFillRequiresTextContentTypeForOneTimeCodeOnMac: true
+        CFBundleURLTypes:
+          - CFBundleURLName: com.alperen.greedify
+            CFBundleURLSchemes: [greedify]
+    entitlements:
+      path: App/Greedify.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+    # Signing comes from Config/Signing.xcconfig: ad-hoc unless a git-ignored Local.xcconfig names a team.
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.alperen.greedify
+        PRODUCT_NAME: Greedify
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    postBuildScripts:
+      - name: Bundle librespot
+        script: '"$SRCROOT/scripts/bundle-librespot.sh"'
+        basedOnDependencyAnalysis: false

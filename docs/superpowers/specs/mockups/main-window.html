@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greedify mockups</title>
+<style>
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --desk-a: #c9d6e8; --desk-b: #e8d9cf;
+  --win: #ffffff;
+  --side: rgba(238, 238, 242, 0.82);
+  --bar: rgba(250, 250, 252, 0.88);
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --text-3: #a1a1a6;
+  --sep: rgba(0, 0, 0, 0.09);
+  --hover: rgba(0, 0, 0, 0.05);
+  --sel: rgba(0, 0, 0, 0.07);
+  --accent: #17a058;
+  --accent-soft: rgba(23, 160, 88, 0.12);
+  --field: rgba(0, 0, 0, 0.05);
+  --menu: rgba(246, 246, 248, 0.94);
+  --shadow: 0 30px 80px rgba(20, 30, 50, 0.28), 0 0 0 0.5px rgba(0, 0, 0, 0.18);
+  --pop-shadow: 0 18px 50px rgba(20, 30, 50, 0.3), 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+  --menubar: rgba(255, 255, 255, 0.55);
+}
+[data-theme="dark"] {
+  --desk-a: #1b2233; --desk-b: #2a1f26;
+  --win: #1e1e20;
+  --side: rgba(44, 44, 48, 0.8);
+  --bar: rgba(36, 36, 39, 0.9);
+  --text: #f5f5f7;
+  --text-2: #98989d;
+  --text-3: #636366;
+  --sep: rgba(255, 255, 255, 0.08);
+  --hover: rgba(255, 255, 255, 0.05);
+  --sel: rgba(255, 255, 255, 0.09);
+  --accent: #34d17c;
+  --accent-soft: rgba(52, 209, 124, 0.14);
+  --field: rgba(255, 255, 255, 0.07);
+  --menu: rgba(44, 44, 48, 0.95);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  --pop-shadow: 0 18px 50px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  --menubar: rgba(30, 30, 34, 0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font); font-size: 13px; color: var(--text);
+  background: linear-gradient(135deg, var(--desk-a), var(--desk-b));
+  min-height: 100vh; padding: 24px 32px 60px;
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s;
+}
+svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+svg.fill { fill: currentColor; stroke: none; }
+
+/* page chrome (not part of the app) */
+.page-head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; color: var(--text); }
+.page-head h1 { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
+.page-head p { color: var(--text-2); }
+.seg { display: inline-flex; background: var(--field); border-radius: 8px; padding: 2px; margin-left: auto; }
+.seg button { font: inherit; border: 0; background: transparent; color: var(--text); padding: 5px 14px; border-radius: 6px; cursor: pointer; }
+.seg button.on { background: var(--win); box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.caption { color: var(--text-2); margin: 36px 0 12px; font-size: 13px; max-width: 70ch; }
+.caption strong { color: var(--text); font-weight: 600; }
+
+/* album art (generated, no real covers) */
+.art { border-radius: 4px; flex: none; position: relative; overflow: hidden; }
+.art::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 0.5px rgba(0,0,0,.12); border-radius: inherit; }
+.a1 { background: radial-gradient(circle at 30% 30%, #ff9a8b, transparent 55%), linear-gradient(135deg, #3a1c71, #d76d77); }
+.a2 { background: radial-gradient(circle at 70% 25%, #fdf1a8 0 12%, transparent 13%), linear-gradient(160deg, #0f2a4a, #2d6a8e 60%, #f2a65a); }
+.a3 { background: linear-gradient(0deg, #a8e6cf 0 30%, transparent 30%), linear-gradient(135deg, #1d4350, #6aa6a8); }
+.a4 { background: repeating-linear-gradient(45deg, #f7c948 0 10px, #f0a202 10px 20px); }
+.a5 { background: radial-gradient(circle at 50% 60%, #ffffff55 0 20%, transparent 21%), linear-gradient(135deg, #8e9eab, #3a4a5a); }
+.a6 { background: linear-gradient(135deg, #ff5f6d, #ffc371); }
+.a7 { background: radial-gradient(circle at 40% 40%, #d4a5ff, transparent 60%), linear-gradient(135deg, #2b1055, #7597de); }
+.a8 { background: linear-gradient(90deg, #11998e 0 50%, #38ef7d 50%); }
+.a9 { background: linear-gradient(135deg, #e96443, #904e95); }
+.a10 { background: linear-gradient(135deg, #0cebeb, #20e3b2, #29ffc6); }
+
+/* ---------- main window ---------- */
+.window {
+  width: 1180px; height: 720px; background: var(--win); border-radius: 14px; overflow: hidden;
+  box-shadow: var(--shadow); display: grid;
+  grid-template-columns: 232px 1fr 300px; grid-template-rows: 1fr 76px;
+  grid-template-areas: "side main lyrics" "bar bar bar";
+  position: relative;
+}
+.window.no-lyrics { grid-template-columns: 232px 1fr 0; }
+.window.no-lyrics .lyrics { display: none; }
+
+.side { grid-area: side; background: var(--side); backdrop-filter: blur(30px); border-right: 0.5px solid var(--sep); padding: 12px 10px; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+.lights { display: flex; gap: 8px; padding: 4px 6px 16px; }
+.lights i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.lights i:nth-child(1) { background: #ff5f57; } .lights i:nth-child(2) { background: #febc2e; } .lights i:nth-child(3) { background: #28c840; }
+.search { display: flex; align-items: center; gap: 6px; background: var(--field); border-radius: 7px; padding: 6px 8px; color: var(--text-2); margin-bottom: 10px; }
+.search span { flex: 1; }
+.search kbd { font: 11px var(--font); color: var(--text-3); }
+.group { font-size: 11px; font-weight: 600; color: var(--text-3); padding: 12px 8px 4px; }
+.item { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; color: var(--text); white-space: nowrap; }
+.item svg { color: var(--accent); }
+.item .art { width: 18px; height: 18px; border-radius: 3px; }
+.item.on { background: var(--sel); font-weight: 500; }
+.item .note { margin-left: auto; color: var(--text-3); font-size: 11px; }
+.item.muted { color: var(--text-2); }
+.item.muted svg { color: var(--text-2); }
+.spacer { flex: 1; }
+
+.main { grid-area: main; overflow: visible; position: relative; z-index: 3; }
+.hero { display: flex; gap: 22px; align-items: flex-end; padding: 34px 28px 20px; }
+.hero .art { width: 168px; height: 168px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.hero .kind { color: var(--text-2); font-size: 12px; margin-bottom: 4px; }
+.hero h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; }
+.hero .meta { color: var(--text-2); margin-bottom: 16px; }
+.actions { display: flex; gap: 10px; align-items: center; }
+.btn-play { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 7px 18px 7px 14px; font: 600 13px var(--font); display: inline-flex; gap: 6px; align-items: center; }
+[data-theme="dark"] .btn-play { color: #06220f; }
+.btn-ghost { background: var(--field); color: var(--text); border: 0; border-radius: 999px; padding: 7px 14px; font: 500 13px var(--font); display: inline-flex; gap: 6px; align-items: center; }
+.btn-icon { background: var(--field); color: var(--text); border: 0; border-radius: 50%; width: 30px; height: 30px; display: inline-grid; place-items: center; }
+
+.tracks { padding: 0 20px; }
+.thead, .row { display: grid; grid-template-columns: 32px 1fr 190px 40px 52px; align-items: center; gap: 10px; padding: 0 8px; }
+.thead { color: var(--text-3); font-size: 11px; height: 28px; border-bottom: 0.5px solid var(--sep); }
+.row { height: 46px; border-radius: 6px; }
+.row:hover { background: var(--hover); }
+.row .n { color: var(--text-3); text-align: right; font-variant-numeric: tabular-nums; }
+.row .t { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.row .t .art { width: 34px; height: 34px; }
+.row .t b { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .t small { color: var(--text-2); font-size: 12px; }
+.row .al { color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .d { color: var(--text-2); text-align: right; font-variant-numeric: tabular-nums; }
+.row .h { color: var(--text-3); display: grid; place-items: center; }
+.row .h.liked { color: var(--accent); }
+.row.playing b, .row.playing .n { color: var(--accent); }
+.row.ctx { background: var(--sel); }
+.eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 12px; }
+.eq i { width: 3px; background: var(--accent); border-radius: 1px; animation: eq 0.9s ease-in-out infinite alternate; }
+.eq i:nth-child(1) { height: 5px; } .eq i:nth-child(2) { height: 12px; animation-delay: .2s; } .eq i:nth-child(3) { height: 8px; animation-delay: .4s; }
+@keyframes eq { to { height: 3px; } }
+@media (prefers-reduced-motion: reduce) { .eq i { animation: none; } }
+
+/* context menu */
+.menu { position: absolute; left: 330px; top: 452px; width: 236px; background: var(--menu); backdrop-filter: blur(24px); border-radius: 10px; padding: 5px; box-shadow: var(--pop-shadow); z-index: 5; }
+.menu .mi { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 5px; }
+.menu .mi svg { color: var(--text-2); }
+.menu .mi.hl { background: var(--accent); color: #fff; }
+.menu .mi.hl svg { color: #fff; }
+[data-theme="dark"] .menu .mi.hl { color: #06220f; } [data-theme="dark"] .menu .mi.hl svg { color: #06220f; }
+.menu .mi .chev { margin-left: auto; }
+.menu hr { border: 0; border-top: 0.5px solid var(--sep); margin: 5px 8px; }
+.submenu { position: absolute; left: 232px; top: 64px; width: 200px; background: var(--menu); backdrop-filter: blur(24px); border-radius: 10px; padding: 5px; box-shadow: var(--pop-shadow); }
+
+/* lyrics: the one bold element — tinted by the playing song's artwork */
+.lyrics { grid-area: lyrics; position: relative; overflow: hidden; color: #fff; }
+.lyrics .bg { position: absolute; inset: -60px; filter: blur(50px) saturate(1.3); transform: scale(1.2); }
+.lyrics .bg::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.28); }
+.lyrics .inner { position: relative; padding: 26px 24px; height: 100%; display: flex; flex-direction: column; }
+.lyrics header { display: flex; align-items: center; gap: 8px; font-size: 12px; opacity: .8; margin-bottom: 26px; }
+.lyrics header .sync { margin-left: auto; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; padding: 1px 8px; font-size: 11px; }
+.lyrics p { font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 16px; opacity: .38; }
+.lyrics p.past { opacity: .22; }
+.lyrics p.now { opacity: 1; }
+.lyrics footer { margin-top: auto; font-size: 11px; opacity: .6; }
+
+/* player bar */
+.bar { grid-area: bar; background: var(--bar); backdrop-filter: blur(30px); border-top: 0.5px solid var(--sep); display: grid; grid-template-columns: 300px 1fr 300px; align-items: center; padding: 0 16px; gap: 20px; }
+.np { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.np .art { width: 48px; height: 48px; border-radius: 5px; }
+.np b { font-weight: 600; display: block; }
+.np small { color: var(--text-2); font-size: 12px; }
+.np .like { color: var(--accent); margin-left: 6px; }
+.center { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ctrls { display: flex; align-items: center; gap: 22px; color: var(--text); }
+.ctrls .muted { color: var(--text-2); }
+.ctrls .on { color: var(--accent); }
+.pp { width: 34px; height: 34px; border-radius: 50%; background: var(--text); color: var(--win); display: grid; place-items: center; }
+.prog { display: flex; align-items: center; gap: 8px; width: 100%; max-width: 480px; font-size: 11px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.track { flex: 1; height: 4px; background: var(--field); border-radius: 2px; position: relative; }
+.track i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--text-2); border-radius: 2px; }
+.right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; color: var(--text-2); }
+.right .on { color: var(--accent); }
+.dev { display: inline-flex; align-items: center; gap: 5px; color: var(--accent); font-size: 12px; font-weight: 500; }
+.vol { width: 84px; }
+
+/* ---------- menu bar + popovers ---------- */
+.desk { display: flex; gap: 48px; align-items: flex-start; }
+.menubar { width: 100%; height: 26px; background: var(--menubar); backdrop-filter: blur(20px); border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 0 14px; font-size: 13px; color: var(--text); margin-bottom: 8px; }
+.menubar .gicon { background: var(--sel); border-radius: 5px; padding: 2px 5px; display: inline-flex; }
+.variant { cursor: pointer; }
+.variant .label { font-size: 13px; color: var(--text-2); margin: 14px 0 0; }
+.variant .label strong { color: var(--text); }
+.variant.selected .pop { outline: 3px solid var(--accent); outline-offset: 4px; }
+.pop { width: 320px; background: var(--menu); backdrop-filter: blur(30px); border-radius: 14px; box-shadow: var(--pop-shadow); padding: 16px; position: relative; }
+.pop::before { content: ""; position: absolute; top: -7px; right: 36px; width: 14px; height: 14px; background: var(--menu); transform: rotate(45deg); border-radius: 2px; }
+.pop .big { width: 288px; height: 288px; border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,.25); margin-bottom: 14px; }
+.pop .ti { display: flex; align-items: center; gap: 8px; }
+.pop .ti div { flex: 1; min-width: 0; }
+.pop .ti b { font-size: 15px; font-weight: 650; display: block; }
+.pop .ti small { color: var(--text-2); }
+.pop .like { color: var(--accent); }
+.pop .prog { max-width: none; margin: 12px 0 10px; }
+.pop .ctrls { justify-content: center; gap: 28px; margin-bottom: 12px; }
+.pop .volrow { display: flex; align-items: center; gap: 8px; color: var(--text-2); margin-bottom: 12px; }
+.pop .volrow .track { height: 4px; }
+.pop .row2 { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 0.5px solid var(--sep); }
+.pop .row2 .dev { flex: 1; }
+.pop .q { display: flex; align-items: center; gap: 6px; background: var(--field); border-radius: 7px; padding: 6px 8px; color: var(--text-2); margin: 4px 0 10px; }
+.pop .foot { display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid var(--sep); padding-top: 10px; }
+.pop .foot a { color: var(--accent); font-weight: 500; text-decoration: none; }
+.pop .foot span { color: var(--text-2); display: inline-flex; gap: 14px; }
+.compact .head { display: flex; gap: 12px; align-items: center; }
+.compact .head .art { width: 64px; height: 64px; border-radius: 7px; }
+.compact .head div { min-width: 0; flex: 1; }
+.compact .head b { font-size: 14px; font-weight: 650; display: block; }
+.compact .head small { color: var(--text-2); }
+.upnext { font-size: 12px; color: var(--text-2); font-weight: 600; margin: 4px 0 6px; }
+.qi { display: flex; align-items: center; gap: 10px; padding: 5px 4px; border-radius: 6px; }
+.qi .art { width: 30px; height: 30px; }
+.qi b { font-weight: 500; display: block; font-size: 12.5px; }
+.qi small { color: var(--text-2); font-size: 11.5px; }
+</style>
+</head>
+<body>
+
+<svg style="display:none">
+  <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 16 16"><path d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5z"/></symbol>
+  <symbol id="i-heart-f" viewBox="0 0 16 16"><path fill="currentColor" d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5z"/></symbol>
+  <symbol id="i-album" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="1.5"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 16 16"><rect x="6" y="2" width="4" height="8" rx="2"/><path d="M3.5 8a4.5 4.5 0 0 0 9 0M8 12.5V14"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></symbol>
+  <symbol id="i-play" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M4.5 2.8v10.4c0 .5.6.8 1 .5l8-5.2a.6.6 0 0 0 0-1l-8-5.2c-.4-.3-1 0-1 .5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><rect fill="currentColor" stroke="none" x="4" y="3" width="2.8" height="10" rx="1"/><rect fill="currentColor" stroke="none" x="9.2" y="3" width="2.8" height="10" rx="1"/></symbol>
+  <symbol id="i-next" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M2.5 3.5v9l6-4.5zM8.5 3.5v9l6-4.5z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M13.5 3.5v9l-6-4.5zM7.5 3.5v9l-6-4.5z"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 16 16"><path d="M2 4h2.5c3 0 4 8 7 8H14M2 12h2.5c1.2 0 2-1.2 2.7-2.7M9 5.5C9.6 4.6 10.4 4 11.5 4H14M12.5 2.5 14 4l-1.5 1.5M12.5 10.5 14 12l-1.5 1.5"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 16 16"><path d="M3 7V6a2 2 0 0 1 2-2h8M11 2l2 2-2 2M13 9v1a2 2 0 0 1-2 2H3M5 14l-2-2 2-2"/></symbol>
+  <symbol id="i-lyrics" viewBox="0 0 16 16"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/><path d="M5 6h6M5 8h4"/></symbol>
+  <symbol id="i-queue" viewBox="0 0 16 16"><path d="M2 4h9M2 8h9M2 12h6M12.5 10v4M10.5 12h4"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 16 16"><rect x="3" y="3.5" width="10" height="7" rx="1"/><path d="M1.5 12.5h13"/></symbol>
+  <symbol id="i-vol" viewBox="0 0 16 16"><path d="M2.5 6h2.5l3-2.5v9L5 10H2.5z"/><path d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12 3.5a6 6 0 0 1 0 9"/></symbol>
+  <symbol id="i-vol-lo" viewBox="0 0 16 16"><path d="M3.5 6h2.5l3-2.5v9L6 10H3.5z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 16 16"><circle fill="currentColor" stroke="none" cx="3.5" cy="8" r="1.3"/><circle fill="currentColor" stroke="none" cx="8" cy="8" r="1.3"/><circle fill="currentColor" stroke="none" cx="12.5" cy="8" r="1.3"/></symbol>
+  <symbol id="i-radio" viewBox="0 0 16 16"><circle cx="8" cy="8" r="1.5"/><path d="M5 5a4.2 4.2 0 0 0 0 6M11 5a4.2 4.2 0 0 1 0 6M3 3a7 7 0 0 0 0 10M13 3a7 7 0 0 1 0 10"/></symbol>
+  <symbol id="i-list" viewBox="0 0 16 16"><path d="M5 4h9M5 8h9M5 12h9M2 4h.01M2 8h.01M2 12h.01"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4"/></symbol>
+  <symbol id="i-mix" viewBox="0 0 16 16"><circle cx="5" cy="11" r="2"/><circle cx="11" cy="9" r="2"/><path d="M7 11V3.5l6-1.5v7"/></symbol>
+  <symbol id="i-g" viewBox="0 0 16 16"><path d="M13 5.5A5.5 5.5 0 1 0 13.5 9H8.5"/></symbol>
+</svg>
+
+<div class="page-head">
+  <div>
+    <h1>Greedify main window</h1>
+    <p>All songs, artists and artwork are made up. Switch the theme to compare light and dark mode.</p>
+  </div>
+  <div class="seg" role="group" aria-label="Theme">
+    <button class="on" onclick="setTheme('light', this)">Light</button>
+    <button onclick="setTheme('dark', this)">Dark</button>
+  </div>
+  <div class="seg" role="group" aria-label="Lyrics panel">
+    <button class="on" onclick="setLyrics(true, this)">Lyrics open</button>
+    <button onclick="setLyrics(false, this)">Lyrics closed</button>
+  </div>
+</div>
+
+<p class="caption"><strong>Main window.</strong> The sidebar holds search, your library, pasted Daily Mixes and playlists. The lyrics panel takes its colours from the playing song's artwork. The right-click menu is shown open on a track.</p>
+
+<div class="window" id="win">
+  <aside class="side">
+    <div class="lights"><i></i><i></i><i></i></div>
+    <div class="search"><svg><use href="#i-search"/></svg><span>Search</span><kbd>⌘K</kbd></div>
+
+    <div class="group">Library</div>
+    <div class="item"><svg><use href="#i-heart"/></svg>Liked Songs<span class="note">1,284</span></div>
+    <div class="item"><svg><use href="#i-album"/></svg>Albums</div>
+    <div class="item"><svg><use href="#i-mic"/></svg>Artists</div>
+
+    <div class="group">Mixes</div>
+    <div class="item"><svg><use href="#i-mix"/></svg>Daily Mix 1</div>
+    <div class="item"><svg><use href="#i-mix"/></svg>Daily Mix 2</div>
+    <div class="item"><svg><use href="#i-mix"/></svg>Daily Mix 4</div>
+    <div class="item muted"><svg><use href="#i-plus"/></svg>Paste a mix link</div>
+
+    <div class="group">Playlists</div>
+    <div class="item on"><span class="art a2"></span>Late Night Drive</div>
+    <div class="item"><span class="art a3"></span>Deep Focus</div>
+    <div class="item"><span class="art a6"></span>Sunday Kitchen</div>
+    <div class="item"><span class="art a7"></span>Run 5K</div>
+    <div class="item"><span class="art a9"></span>Old Favourites</div>
+    <div class="spacer"></div>
+    <div class="item muted"><svg><use href="#i-plus"/></svg>New Playlist</div>
+  </aside>
+
+  <section class="main">
+    <div class="hero">
+      <div class="art a2"></div>
+      <div>
+        <div class="kind">Your playlist</div>
+        <h2>Late Night Drive</h2>
+        <div class="meta">42 songs, 2 h 51 min</div>
+        <div class="actions">
+          <button class="btn-play"><svg><use href="#i-play"/></svg>Play</button>
+          <button class="btn-ghost"><svg><use href="#i-shuffle"/></svg>Shuffle</button>
+          <button class="btn-icon" aria-label="More"><svg><use href="#i-more"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tracks">
+      <div class="thead"><span style="text-align:right">#</span><span>Title</span><span>Album</span><span></span><span style="text-align:right">Time</span></div>
+      <div class="row"><span class="n">1</span><span class="t"><span class="art a1"></span><span><b>Neon Arcade</b><small>Vela Moss</small></span></span><span class="al">Afterglow Tapes</span><span class="h liked"><svg><use href="#i-heart-f"/></svg></span><span class="d">3:41</span></div>
+      <div class="row playing"><span class="n"><span class="eq"><i></i><i></i><i></i></span></span><span class="t"><span class="art a2"></span><span><b>Paper Satellites</b><small>The Quiet Harbor</small></span></span><span class="al">Low Orbit</span><span class="h liked"><svg><use href="#i-heart-f"/></svg></span><span class="d">4:05</span></div>
+      <div class="row"><span class="n">3</span><span class="t"><span class="art a3"></span><span><b>Coastline Static</b><small>Juno Park</small></span></span><span class="al">Salt and Signal</span><span class="h"></span><span class="d">3:18</span></div>
+      <div class="row"><span class="n">4</span><span class="t"><span class="art a4"></span><span><b>Midnight Laundromat</b><small>Oso Blanco</small></span></span><span class="al">Rinse Cycle</span><span class="h"></span><span class="d">2:57</span></div>
+      <div class="row ctx"><span class="n">5</span><span class="t"><span class="art a5"></span><span><b>Glass Elevator</b><small>Mira Keene</small></span></span><span class="al">Floors</span><span class="h"><svg><use href="#i-heart"/></svg></span><span class="d">3:52</span></div>
+      <div class="row"><span class="n">6</span><span class="t"><span class="art a8"></span><span><b>Slow Traffic</b><small>Northbound Kids</small></span></span><span class="al">Exit 14</span><span class="h"></span><span class="d">4:21</span></div>
+      <div class="row"><span class="n">7</span><span class="t"><span class="art a9"></span><span><b>Velvet Hours</b><small>Aya Sato</small></span></span><span class="al">Velvet Hours</span><span class="h liked"><svg><use href="#i-heart-f"/></svg></span><span class="d">3:33</span></div>
+      <div class="row"><span class="n">8</span><span class="t"><span class="art a10"></span><span><b>Radio Towers</b><small>Lumen and Pike</small></span></span><span class="al">Frequencies</span><span class="h"></span><span class="d">5:02</span></div>
+    </div>
+
+    <div class="menu" role="menu">
+      <div class="mi"><svg><use href="#i-play"/></svg>Play</div>
+      <div class="mi"><svg><use href="#i-queue"/></svg>Add to Queue</div>
+      <div class="mi"><svg><use href="#i-radio"/></svg>Start Song Radio</div>
+      <hr>
+      <div class="mi hl"><svg><use href="#i-list"/></svg>Add to Playlist<svg class="chev"><use href="#i-chev"/></svg></div>
+      <div class="mi"><svg><use href="#i-minus"/></svg>Remove from This Playlist</div>
+      <div class="mi"><svg><use href="#i-heart"/></svg>Like</div>
+      <div class="submenu">
+        <div class="mi"><svg><use href="#i-plus"/></svg>New Playlist…</div>
+        <hr>
+        <div class="mi">Deep Focus</div>
+        <div class="mi">Sunday Kitchen</div>
+        <div class="mi">Run 5K</div>
+        <div class="mi">Old Favourites</div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="lyrics">
+    <div class="bg a2"></div>
+    <div class="inner">
+      <header><svg><use href="#i-lyrics"/></svg>Paper Satellites<span class="sync">Synced</span></header>
+      <p class="past">We folded our names into paper satellites</p>
+      <p class="past">Threw them off the roof on a Tuesday night</p>
+      <p class="now">Watched them drift past the laundromat light</p>
+      <p>Nobody down there looked up</p>
+      <p>And the city kept humming along</p>
+      <p>We were small, we were loud, we were gone</p>
+      <footer>Lyrics from LRCLIB</footer>
+    </div>
+  </aside>
+
+  <footer class="bar">
+    <div class="np">
+      <span class="art a2"></span>
+      <div><b>Paper Satellites</b><small>The Quiet Harbor</small></div>
+      <svg class="like"><use href="#i-heart-f"/></svg>
+    </div>
+    <div class="center">
+      <div class="ctrls">
+        <svg class="muted"><use href="#i-shuffle"/></svg>
+        <svg><use href="#i-prev"/></svg>
+        <span class="pp"><svg><use href="#i-pause"/></svg></span>
+        <svg><use href="#i-next"/></svg>
+        <svg class="muted"><use href="#i-repeat"/></svg>
+      </div>
+      <div class="prog"><span>1:52</span><div class="track"><i style="width:46%"></i></div><span>4:05</span></div>
+    </div>
+    <div class="right">
+      <svg class="on"><use href="#i-lyrics"/></svg>
+      <svg><use href="#i-queue"/></svg>
+      <span class="dev"><svg><use href="#i-laptop"/></svg>Studio Mac</span>
+      <svg><use href="#i-vol"/></svg>
+      <div class="track vol"><i style="width:65%"></i></div>
+    </div>
+  </footer>
+</div>
+
+<p class="caption">The menu-bar popover is in popover.html.</p>
+
+<script>
+function setTheme(t, b) {
+  document.documentElement.dataset.theme = t;
+  b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+}
+function setLyrics(on, b) {
+  document.getElementById('win').classList.toggle('no-lyrics', !on);
+  b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+}
+function pick(el) {
+  document.querySelectorAll('.variant').forEach(v => v.classList.toggle('selected', v === el));
+  if (typeof toggleSelect === 'function') { try { toggleSelect(el); } catch (e) {} }
+}
+</script>
+</body>
+</html>

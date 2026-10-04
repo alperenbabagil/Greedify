@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "High Contrast",
+  "author": "Greedify",
+  "base": "dark",
+  "lyrics": "solid",
+  "colors": {
+    "background": "#000000", "surface": "#000000", "raised": "#0A0A0A",
+    "text": "#FFFFFF", "textSecondary": "#D0D0D0",
+    "accent": "#FFD60A", "onAccent": "#000000",
+    "selection": "#333333", "divider": "#FFFFFF", "lyricsText": "#FFFFFF"
+  },
+  "fonts": { "scale": 1.1, "titleWeight": "heavy" },
+  "shapes": { "cardRadius": 4, "buttonRadius": 4, "artworkRadius": 0, "rowRadius": 4, "borderWidth": 2, "buttonStyle": "outlined", "density": "regular" }
+}

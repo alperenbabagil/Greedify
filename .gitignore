@@ -1,0 +1,9 @@
+.superpowers/
+.DS_Store
+build/
+Greedify.xcodeproj/
+App/Info.plist
+.build/
+Packages/GreedifyKit/.build/
+__pycache__/
+Local.xcconfig

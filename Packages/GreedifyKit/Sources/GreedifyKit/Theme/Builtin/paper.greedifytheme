@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "Paper",
+  "author": "Greedify",
+  "base": "light",
+  "lyrics": "solid",
+  "colors": {
+    "background": "#FBF7EF", "surface": "#F1EADB", "raised": "#FFFDF8",
+    "text": "#2B2622", "textSecondary": "#6B6158",
+    "accent": "#B5542D", "onAccent": "#FFFFFF",
+    "selection": "#E8DCC6", "divider": "#2B26221F", "lyricsText": "#2B2622"
+  },
+  "fonts": { "family": "Georgia", "scale": 1.0, "titleWeight": "semibold" },
+  "shapes": { "cardRadius": 6, "buttonRadius": 6, "artworkRadius": 4, "rowRadius": 6, "borderWidth": 1, "buttonStyle": "outlined", "density": "regular" }
+}

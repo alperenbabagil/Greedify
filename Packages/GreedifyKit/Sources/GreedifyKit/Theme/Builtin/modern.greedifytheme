@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "Modern",
+  "author": "Greedify",
+  "base": "dark",
+  "lyrics": "artwork",
+  "colors": {
+    "background": "#121418", "surface": "#1A1D23", "raised": "#22262E",
+    "text": "#ECEFF4", "textSecondary": "#9AA3B2",
+    "accent": "#7C9CFF", "onAccent": "#0B0D12",
+    "selection": "#2A3142", "divider": "#FFFFFF14", "lyricsText": "#ECEFF4"
+  },
+  "fonts": { "scale": 1.0, "titleWeight": "heavy" },
+  "shapes": { "cardRadius": 14, "buttonRadius": 18, "artworkRadius": 10, "rowRadius": 10, "borderWidth": 0, "buttonStyle": "filled", "density": "regular" }
+}

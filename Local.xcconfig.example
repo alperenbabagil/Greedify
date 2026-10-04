@@ -1,0 +1,4 @@
+// Copy to Local.xcconfig (git-ignored) to sign with your own Apple Development certificate.
+// Your team ID is in the certificate's name: security find-identity -v -p codesigning
+CODE_SIGN_IDENTITY = Apple Development
+DEVELOPMENT_TEAM = YOUR_TEAM_ID

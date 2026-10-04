@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<!-- Spotify's vocabulary and codes, so now-playing scripts written for Spotify work with "Greedify" too. -->
+<dictionary title="Greedify Terminology" xmlns:xi="http://www.w3.org/2003/XInclude">
+	<xi:include href="file:///System/Library/ScriptingDefinitions/CocoaStandard.sdef" xpointer="xpointer(/dictionary/suite)"/>
+	<suite name="Greedify Suite" code="spfy" description="Greedify playback.">
+		<enumeration name="ePlS" code="ePlS">
+			<enumerator name="stopped" code="kPSS"/>
+			<enumerator name="playing" code="kPSP"/>
+			<enumerator name="paused" code="kPSp"/>
+		</enumeration>
+		<class-extension extends="application" description="Greedify.">
+			<property name="current track" code="pTrk" type="track" access="r" description="The track now playing.">
+				<cocoa key="currentTrack"/>
+			</property>
+			<property name="player state" code="pPlS" type="ePlS" access="r" description="Is Greedify stopped, paused, or playing?">
+				<cocoa key="playerState"/>
+			</property>
+		</class-extension>
+		<class name="track" code="spTr" plural="tracks" description="A Spotify track.">
+			<cocoa class="GreedifyScriptTrack"/>
+			<property name="name" code="pnam" type="text" access="r" description="The name of the track."><cocoa key="name"/></property>
+			<property name="artist" code="pArt" type="text" access="r" description="The artists of the track."><cocoa key="artist"/></property>
+			<property name="album" code="pAlb" type="text" access="r" description="The album of the track."><cocoa key="album"/></property>
+			<property name="duration" code="pDur" type="integer" access="r" description="The length of the track in seconds."><cocoa key="duration"/></property>
+			<property name="id" code="ID  " type="text" access="r" description="The Spotify URI of the track."><cocoa key="trackID"/></property>
+			<property name="spotify url" code="spur" type="text" access="r" description="The Spotify URI of the track."><cocoa key="spotifyURL"/></property>
+		</class>
+		<command name="next track" code="spfyNext" description="Skip to the next track."><cocoa class="GreedifyNextCommand"/></command>
+		<command name="previous track" code="spfyPrev" description="Skip to the previous track."><cocoa class="GreedifyPreviousCommand"/></command>
+		<command name="playpause" code="spfyPlPs" description="Toggle play/pause."><cocoa class="GreedifyPlayPauseCommand"/></command>
+		<command name="pause" code="spfyPaus" description="Pause playback."><cocoa class="GreedifyPauseCommand"/></command>
+		<command name="play" code="spfyPlay" description="Resume playback."><cocoa class="GreedifyPlayCommand"/></command>
+	</suite>
+</dictionary>

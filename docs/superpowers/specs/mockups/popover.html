@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greedify popover v3</title>
+<style>
+.light {
+  --desk: linear-gradient(135deg, #c9d6e8, #e8d9cf);
+  --menu: rgba(246, 246, 248, 0.94); --text: #1d1d1f; --text-2: #6e6e73;
+  --sep: rgba(0,0,0,.09); --field: rgba(0,0,0,.07); --accent: #17a058; --win: #fff;
+  --menubar: rgba(255,255,255,.55); --sel: rgba(0,0,0,.07);
+  --pop-shadow: 0 18px 50px rgba(20,30,50,.3), 0 0 0 .5px rgba(0,0,0,.15);
+}
+.dark {
+  --desk: linear-gradient(135deg, #1b2233, #2a1f26);
+  --menu: rgba(44, 44, 48, 0.95); --text: #f5f5f7; --text-2: #98989d;
+  --sep: rgba(255,255,255,.08); --field: rgba(255,255,255,.1); --accent: #34d17c; --win: #1e1e20;
+  --menubar: rgba(30,30,34,.6); --sel: rgba(255,255,255,.09);
+  --pop-shadow: 0 18px 50px rgba(0,0,0,.6), 0 0 0 .5px rgba(255,255,255,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font: 13px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; -webkit-font-smoothing: antialiased; background: #d9dde4; }
+.intro { padding: 24px 32px 0; color: #3a3a3c; }
+.intro h1 { font-size: 20px; font-weight: 650; margin-bottom: 4px; color: #1d1d1f; }
+.stage { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 20px; }
+.desk { background: var(--desk); padding: 16px 32px 48px; min-height: 420px; }
+.menubar { height: 26px; background: var(--menubar); border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 0 14px; color: var(--text); margin-bottom: 10px; }
+.gicon { background: var(--sel); border-radius: 5px; padding: 2px 5px; display: inline-flex; }
+svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.pop { width: 300px; margin-left: auto; margin-right: -2px; background: var(--menu); border-radius: 14px; box-shadow: var(--pop-shadow); padding: 16px; position: relative; color: var(--text); }
+.pop::before { content: ""; position: absolute; top: -7px; right: 18px; width: 14px; height: 14px; background: var(--menu); transform: rotate(45deg); border-radius: 2px; }
+.art { width: 64px; height: 64px; border-radius: 8px; flex: none; background: radial-gradient(circle at 70% 25%, #fdf1a8 0 12%, transparent 13%), linear-gradient(160deg, #0f2a4a, #2d6a8e 60%, #f2a65a); box-shadow: 0 6px 16px rgba(0,0,0,.2); }
+.head { display: flex; gap: 12px; align-items: center; }
+.head div { flex: 1; min-width: 0; }
+.head b { font-size: 15px; font-weight: 650; display: block; }
+.head small { color: var(--text-2); font-size: 12.5px; }
+.like { color: var(--accent); width: 20px; height: 20px; }
+.prog { display: flex; align-items: center; gap: 8px; margin: 16px 0 14px; font-size: 11px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.track { flex: 1; height: 5px; background: var(--field); border-radius: 3px; position: relative; }
+.track i { position: absolute; inset: 0 54% 0 0; background: var(--text-2); border-radius: 3px; }
+.ctrls { display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 14px; }
+.ctrls svg { width: 24px; height: 24px; }
+.pp { width: 48px; height: 48px; border-radius: 50%; background: var(--text); color: var(--win); display: grid; place-items: center; }
+.pp svg { width: 22px; height: 22px; }
+.dev { display: flex; align-items: center; gap: 8px; padding: 10px 0; border-top: .5px solid var(--sep); color: var(--accent); font-weight: 500; }
+.dev span { flex: 1; }
+.dev .chev { color: var(--text-2); }
+.foot { display: flex; align-items: center; justify-content: space-between; border-top: .5px solid var(--sep); padding-top: 10px; }
+.menubar span { white-space: nowrap; }
+.gicon { gap: 6px; align-items: center; max-width: 280px; }
+.gicon em { font-style: normal; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.opt { display: flex; align-items: center; gap: 8px; padding: 10px 0; border-top: .5px solid var(--sep); }
+.opt span { flex: 1; }
+.opt svg { color: var(--text-2); }
+.sw { width: 32px; height: 19px; border-radius: 10px; background: var(--accent); position: relative; flex: none; }
+.sw::after { content: ""; position: absolute; top: 2px; right: 2px; width: 15px; height: 15px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.foot a { color: var(--accent); font-weight: 500; text-decoration: none; }
+.foot svg { color: var(--text-2); }
+</style>
+</head>
+<body>
+<svg style="display:none">
+  <symbol id="i-heart-f" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><rect fill="currentColor" stroke="none" x="4" y="3" width="2.8" height="10" rx="1"/><rect fill="currentColor" stroke="none" x="9.2" y="3" width="2.8" height="10" rx="1"/></symbol>
+  <symbol id="i-next" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M2.5 3.5v9l6-4.5zM8.5 3.5v9l6-4.5z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 16 16"><path fill="currentColor" stroke="none" d="M13.5 3.5v9l-6-4.5zM7.5 3.5v9l-6-4.5z"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 16 16"><rect x="3" y="3.5" width="10" height="7" rx="1"/><path d="M1.5 12.5h13"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4"/></symbol>
+  <symbol id="i-lyrics" viewBox="0 0 16 16"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/><path d="M5 6h6M5 8h4"/></symbol>
+  <symbol id="i-g" viewBox="0 0 16 16"><path d="M13 5.5A5.5 5.5 0 1 0 13.5 9H8.5"/></symbol>
+</svg>
+
+<div class="intro">
+  <h1>Lyrics in the menu bar</h1>
+  <p>With the option on, the current lyric line appears next to the icon. The switch is in the popover and in Settings. Light on the left, dark on the right.</p>
+</div>
+
+<div class="stage">
+  <div class="desk light" id="tpl">
+    <div class="menubar"><span>Wed 29 Sep 14:32</span><span class="gicon"><svg><use href="#i-g"/></svg><em>Watched them drift past the laundromat light</em></span></div>
+    <div class="pop">
+      <div class="head">
+        <span class="art"></span>
+        <div><b>Paper Satellites</b><small>The Quiet Harbor</small></div>
+        <svg class="like"><use href="#i-heart-f"/></svg>
+      </div>
+      <div class="prog"><span>1:52</span><div class="track"><i></i></div><span>4:05</span></div>
+      <div class="ctrls">
+        <svg><use href="#i-prev"/></svg>
+        <span class="pp"><svg><use href="#i-pause"/></svg></span>
+        <svg><use href="#i-next"/></svg>
+      </div>
+      <div class="dev"><svg><use href="#i-laptop"/></svg><span>Playing on Studio Mac</span><svg class="chev"><use href="#i-down"/></svg></div>
+      <div class="opt"><svg><use href="#i-lyrics"/></svg><span>Lyrics in menu bar</span><i class="sw"></i></div>
+      <div class="foot"><a href="#">Open Greedify</a><svg><use href="#i-gear"/></svg></div>
+    </div>
+  </div>
+  <div class="desk dark" id="dark"></div>
+</div>
+<script>
+  document.getElementById('dark').innerHTML = document.getElementById('tpl').innerHTML;
+</script>
+</body>
+</html>
